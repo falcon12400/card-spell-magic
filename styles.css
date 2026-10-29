@@ -89,7 +89,7 @@ select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216,183,109
 .back-button { margin: 1.8rem 0 .5rem; padding: .5rem 0; border: 0; background: transparent; color: var(--muted); font-size: .8rem; }
 .back-button span { color: var(--gold); margin-right: .3rem; }
 .result-hero { text-align: center; padding: 1.25rem 0 2rem; }
-.mini-card { display: grid; place-content: center; width: 3.6rem; height: 5rem; margin: .9rem auto 1.15rem; overflow: hidden; border-radius: .35rem; color: #161725; background: #f8f4e9; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+.mini-card { display: grid; place-content: center; width: clamp(7rem, 33vw, 10rem); height: auto; aspect-ratio: 5 / 7; margin: .9rem auto 1.35rem; overflow: hidden; border-radius: .55rem; color: #161725; background: #f8f4e9; box-shadow: 0 18px 38px rgba(0,0,0,.38); }
 .result-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1; }
 .result-hero h1 i { color: var(--gold); font-size: .72em; font-weight: 600; }
 .pronunciation { margin: .65rem 0 0; color: var(--muted); font-size: .85rem; letter-spacing: .08em; }
