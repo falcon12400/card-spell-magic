@@ -40,12 +40,12 @@ button { cursor: pointer; }
 
 .app-shell { width: min(100%, 540px); min-height: 100vh; margin: 0 auto; padding: max(1rem, env(safe-area-inset-top)) 1.25rem max(2.5rem, env(safe-area-inset-bottom)); position: relative; }
 .topbar { height: 4rem; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: .55rem; border: 0; padding: 0; color: var(--ink); background: transparent; text-align: left; }
+.brand { display: flex; flex: 0 0 auto; align-items: center; gap: .55rem; border: 0; padding: 0; color: var(--ink); background: transparent; text-align: left; }
 .brand-logo-crop { position: relative; display: grid; place-items: center; width: 3.6rem; height: 3.2rem; overflow: hidden; border-radius: .5rem; background: rgba(255,255,255,.035); border: 1px solid rgba(216,183,109,.16); }
 .brand-logo-crop img { width: 2.25rem; height: 3.4rem; object-fit: contain; transform: rotate(-58deg) scale(1.14); filter: drop-shadow(0 0 7px rgba(245,221,163,.22)); }
-.brand-copy { display: grid; line-height: 1; }
-.brand-copy strong { font-size: .92rem; font-weight: 700; letter-spacing: .16em; }
-.brand-copy small { margin-top: .3rem; color: var(--gold); font-family: var(--serif); font-size: .52rem; font-weight: 700; letter-spacing: .13em; }
+.brand-copy { display: grid; flex: 0 0 auto; min-width: 6.4rem; line-height: 1; }
+.brand-copy strong { font-size: .92rem; font-weight: 700; letter-spacing: .16em; white-space: nowrap; }
+.brand-copy small { margin-top: .3rem; color: var(--gold); font-family: var(--serif); font-size: .52rem; font-weight: 700; letter-spacing: .13em; white-space: nowrap; }
 .step-pill { border: 1px solid var(--line); border-radius: 999px; padding: .32rem .72rem; color: var(--muted); font-size: .72rem; letter-spacing: .1em; }
 
 .screen { display: none; animation: rise .55s cubic-bezier(.22,.8,.3,1) both; }
@@ -141,6 +141,13 @@ select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216,183,109
 @media (min-width: 700px) {
   .app-shell { padding-inline: 2rem; }
   .selection-panel { padding: 1.5rem; }
+}
+
+@media (max-width: 390px) {
+  .brand-logo-crop { width: 3.2rem; }
+  .brand-copy { min-width: 5.3rem; }
+  .brand-copy strong { font-size: .82rem; }
+  .brand-copy small { font-size: .44rem; letter-spacing: .08em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
