@@ -77,7 +77,7 @@ function renderGuide() {
       <div class="timeline-content">
         <div class="timeline-title">
           <strong>${stage.word.toUpperCase()}</strong>
-          <span>${stage.magic ? "C 時翻牌" : `${stage.word.length} 張牌`}</span>
+          <span class="deal-count">${stage.magic ? "<b>C</b><small>時翻牌</small>" : `<b>${stage.word.length}</b><small>張牌</small>`}</span>
         </div>
         <div class="letters">
           ${letters(stage.word).map((letter, letterIndex) => `
