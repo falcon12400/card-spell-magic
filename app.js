@@ -30,16 +30,17 @@ function letters(word) {
   return [...word.toUpperCase()];
 }
 
+function cardAsset(rank, suitKey) {
+  const suitCode = { clubs: "C", diamonds: "D", hearts: "H", spades: "S" }[suitKey];
+  return `assets/cards/${rank}${suitCode}.svg`;
+}
+
 function updatePreview() {
   const suit = SUITS[suitSelect.value];
   const rank = rankSelect.value;
-  document.querySelector("#previewRank").textContent = rank;
-  document.querySelector("#previewSuit").textContent = suit.symbol;
-  document.querySelector("#previewCenterSuit").textContent = suit.symbol;
-  const bottom = document.querySelector(".corner-bottom");
-  bottom.querySelector("b").textContent = rank;
-  bottom.querySelector("span").textContent = suit.symbol;
-  document.querySelector("#chosenPreview").classList.toggle("red", suit.red);
+  const image = document.querySelector("#previewCardImage");
+  image.src = cardAsset(rank, suitSelect.value);
+  image.alt = `${suit.zh} ${rank}`;
 }
 
 function renderGuide() {
@@ -50,9 +51,9 @@ function renderGuide() {
   const words = [rank.en, "of", suit.en];
   const total = words.reduce((sum, word) => sum + word.length, 0);
 
-  document.querySelector("#resultRank").textContent = rankKey;
-  document.querySelector("#resultSuit").textContent = suit.symbol;
-  document.querySelector("#resultCard").classList.toggle("red", suit.red);
+  const resultImage = document.querySelector("#resultCardImage");
+  resultImage.src = cardAsset(rankKey, suitKey);
+  resultImage.alt = `${suit.zh} ${rank.zh}`;
   document.querySelector("#guideTitle").innerHTML = `${rank.en} <i>of</i> ${suit.en}`;
   document.querySelector("#zhCardName").textContent = `${suit.zh} ${rank.zh}`;
   document.querySelector("#totalLetters").textContent = `共 ${total} 字母`;
@@ -67,8 +68,7 @@ function renderGuide() {
   const stages = [
     { label: "牌面", word: rank.en },
     { label: "連接詞", word: "OF" },
-    { label: "花色", word: suit.en },
-    { label: "魔術字", word: "MAGIC", magic: true }
+    { label: "花色", word: suit.en }
   ];
 
   document.querySelector("#timeline").innerHTML = stages.map((stage, index) => `
@@ -77,11 +77,11 @@ function renderGuide() {
       <div class="timeline-content">
         <div class="timeline-title">
           <strong>${stage.word.toUpperCase()}</strong>
-          <span class="deal-count">${stage.magic ? "<b>C</b><small>時翻牌</small>" : `<b>${stage.word.length}</b><small>張牌</small>`}</span>
+          <span class="deal-count"><b>${stage.word.length}</b><small>張牌</small></span>
         </div>
         <div class="letters">
           ${letters(stage.word).map((letter, letterIndex) => `
-            <span class="letter"${stage.magic && letterIndex === 4 ? ' title="在 C 翻牌"' : ""}>${letter}</span>
+            <span class="letter">${letter}</span>
           `).join("")}
         </div>
       </div>

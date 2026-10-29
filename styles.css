@@ -66,8 +66,8 @@ h1, h2, p { overflow-wrap: break-word; }
 .card-back span { z-index: 1; }
 .card-ghost-left { transform: translate(-82%, -46%) rotate(-15deg); }
 .card-ghost-right { transform: translate(-18%, -46%) rotate(15deg); }
-.chosen-preview { transform: translate(-50%, -52%) rotate(0); background: #f8f4e9; color: #161725; border: 1px solid #fff; z-index: 2; transition: transform .3s ease; }
-.chosen-preview.red { color: #b7353b; }
+.chosen-preview { transform: translate(-50%, -52%) rotate(0); overflow: hidden; background: #f8f4e9; color: #161725; border: 0; z-index: 2; transition: transform .3s ease; }
+.card-face-image { display: block; width: 100%; height: 100%; object-fit: contain; }
 .corner { position: absolute; top: .55rem; left: .6rem; display: grid; text-align: center; line-height: .85; font-family: var(--serif); font-size: 1.1rem; }
 .corner span { font-size: .9rem; }
 .corner-bottom { top: auto; left: auto; right: .6rem; bottom: .55rem; transform: rotate(180deg); }
@@ -89,9 +89,7 @@ select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216,183,109
 .back-button { margin: 1.8rem 0 .5rem; padding: .5rem 0; border: 0; background: transparent; color: var(--muted); font-size: .8rem; }
 .back-button span { color: var(--gold); margin-right: .3rem; }
 .result-hero { text-align: center; padding: 1.25rem 0 2rem; }
-.mini-card { display: grid; place-content: center; width: 3.6rem; height: 5rem; margin: .9rem auto 1.15rem; border-radius: .35rem; color: #161725; background: #f8f4e9; box-shadow: 0 12px 30px rgba(0,0,0,.35); font-family: var(--serif); line-height: .8; font-size: 1.25rem; }
-.mini-card.red { color: #b7353b; }
-.mini-card span { font-size: 1rem; }
+.mini-card { display: grid; place-content: center; width: 3.6rem; height: 5rem; margin: .9rem auto 1.15rem; overflow: hidden; border-radius: .35rem; color: #161725; background: #f8f4e9; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
 .result-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1; }
 .result-hero h1 i { color: var(--gold); font-size: .72em; font-weight: 600; }
 .pronunciation { margin: .65rem 0 0; color: var(--muted); font-size: .85rem; letter-spacing: .08em; }
