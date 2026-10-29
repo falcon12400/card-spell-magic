@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c1020">
+  <meta name="description" content="將 52 張撲克牌轉成正確英文，跟著字母一步步完成魔術發牌。">
+  <title>Spellbound｜撲克牌魔術拼字助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="brandHome" aria-label="回到選牌頁">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>SPELLBOUND</span>
+      </button>
+      <span class="step-pill" id="stepPill">選牌</span>
+    </header>
+
+    <section class="screen active" id="setupScreen" aria-labelledby="setupTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">THE CARD SPELLING ASSISTANT</p>
+        <h1 id="setupTitle">選一張牌，<br><em>讓字母施展魔法。</em></h1>
+        <p class="intro">選擇觀眾的牌，我們會把英文名稱拆成清楚的逐字發牌步驟。</p>
+      </div>
+
+      <div class="card-stage" aria-hidden="true">
+        <div class="playing-card card-back card-ghost-left"><span>✦</span></div>
+        <div class="playing-card card-back card-ghost-right"><span>✦</span></div>
+        <div class="playing-card chosen-preview" id="chosenPreview">
+          <div class="corner"><b id="previewRank">A</b><span id="previewSuit">♠</span></div>
+          <div class="center-suit" id="previewCenterSuit">♠</div>
+          <div class="corner corner-bottom"><b>A</b><span>♠</span></div>
+        </div>
+      </div>
+
+      <form class="selection-panel" id="cardForm">
+        <label class="field">
+          <span class="field-label"><span>01</span> 選擇牌面</span>
+          <span class="select-wrap">
+            <select id="rankSelect" aria-label="選擇牌面">
+              <option value="A">A — Ace</option>
+              <option value="2">2 — Two</option>
+              <option value="3">3 — Three</option>
+              <option value="4">4 — Four</option>
+              <option value="5">5 — Five</option>
+              <option value="6">6 — Six</option>
+              <option value="7">7 — Seven</option>
+              <option value="8">8 — Eight</option>
+              <option value="9">9 — Nine</option>
+              <option value="10">10 — Ten</option>
+              <option value="J">J — Jack</option>
+              <option value="Q">Q — Queen</option>
+              <option value="K">K — King</option>
+            </select>
+          </span>
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>02</span> 選擇花色</span>
+          <span class="select-wrap">
+            <select id="suitSelect" aria-label="選擇花色">
+              <option value="spades">♠ 黑桃 — Spades</option>
+              <option value="hearts">♥ 紅心 — Hearts</option>
+              <option value="diamonds">♦ 方塊 — Diamonds</option>
+              <option value="clubs">♣ 梅花 — Clubs</option>
+            </select>
+          </span>
+        </label>
+
+        <button class="primary-button" type="submit">
+          <span>開始魔術</span><span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="screen" id="guideScreen" aria-labelledby="guideTitle">
+      <button class="back-button" id="backButton"><span aria-hidden="true">←</span> 重新選牌</button>
+
+      <div class="result-hero">
+        <p class="eyebrow">YOUR SELECTED CARD</p>
+        <div class="mini-card" id="resultCard" aria-hidden="true">
+          <b id="resultRank">A</b><span id="resultSuit">♠</span>
+        </div>
+        <h1 id="guideTitle">Ace <i>of</i> Spades</h1>
+        <p class="pronunciation" id="zhCardName">黑桃 A</p>
+      </div>
+
+      <section class="word-count" aria-labelledby="countTitle">
+        <div class="section-heading">
+          <div><span class="section-number">01</span><h2 id="countTitle">英文與字母數</h2></div>
+          <span class="total-pill" id="totalLetters">共 11 字母</span>
+        </div>
+        <div class="count-grid" id="countGrid"></div>
+        <p class="count-note">只計算英文字母，不計空格。</p>
+      </section>
+
+      <section class="dealing-guide" aria-labelledby="dealTitle">
+        <div class="section-heading">
+          <div><span class="section-number">02</span><h2 id="dealTitle">逐字發牌</h2></div>
+        </div>
+        <p class="guide-note">每唸一個字母，就從牌堆頂發一張牌到桌面。</p>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="reveal-panel">
+        <div class="sparkle">✦</div>
+        <p class="eyebrow">THE FINAL REVEAL</p>
+        <h2>在最後的 <strong>C</strong><br>翻出觀眾的牌</h2>
+        <p>唸出 M、A、G、I 時各發一張；唸到 C，將下一張牌翻開。</p>
+        <div class="magic-word" aria-label="MAGIC">
+          <span>M</span><span>A</span><span>G</span><span>I</span><span class="reveal-letter">C<small>翻牌</small></span>
+        </div>
+      </section>
+
+      <button class="secondary-button" id="restartButton">再選一張牌</button>
+      <p class="footer-mark">♠ &nbsp; MADE FOR A LITTLE MAGIC &nbsp; ♣</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
