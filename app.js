@@ -58,10 +58,11 @@ function renderGuide() {
   document.querySelector("#zhCardName").textContent = `${suit.zh} ${rank.zh}`;
   document.querySelector("#totalLetters").textContent = `共 ${total} 字母`;
 
-  document.querySelector("#countGrid").innerHTML = words.map(word => `
-    <div class="count-card">
+  document.querySelector("#countGrid").innerHTML = words.map((word, index) => `
+    <div class="count-card${index === 2 ? ` suit-count-card${suit.red ? " red" : ""}` : ""}">
+      ${index === 2 ? `<span class="count-suit-watermark" aria-hidden="true">${suit.symbol}</span>` : ""}
       <strong>${word.toUpperCase()}</strong>
-      <span>${word.length} 個字母</span>
+      <small>${word.length} 個字母</small>
     </div>
   `).join("");
 

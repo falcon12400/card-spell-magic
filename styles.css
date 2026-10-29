@@ -101,9 +101,11 @@ select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216,183,109
 .section-heading h2 { margin: 0; font-family: var(--serif); font-size: 1.45rem; }
 .total-pill { padding: .3rem .6rem; color: var(--gold-light); background: rgba(216,183,109,.1); border: 1px solid rgba(216,183,109,.2); border-radius: 999px; font-size: .68rem; }
 .count-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin-top: 1rem; }
-.count-card { min-width: 0; padding: .8rem .5rem; text-align: center; background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: .75rem; }
-.count-card strong { display: block; overflow: hidden; text-overflow: ellipsis; font-family: var(--serif); font-size: 1.05rem; white-space: nowrap; }
-.count-card span { display: block; margin-top: .2rem; color: var(--muted); font-size: .68rem; }
+.count-card { position: relative; min-width: 0; overflow: hidden; padding: .8rem .5rem; text-align: center; background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: .75rem; }
+.count-card strong { position: relative; z-index: 1; display: block; overflow: hidden; text-overflow: ellipsis; font-family: var(--serif); font-size: 1.05rem; white-space: nowrap; }
+.count-card small { position: relative; z-index: 1; display: block; margin-top: .2rem; color: var(--muted); font-size: .68rem; }
+.count-suit-watermark { position: absolute; z-index: 0; right: .35rem; top: 50%; transform: translateY(-51%) rotate(-8deg); color: var(--gold-light); font-size: 3.2rem; line-height: 1; opacity: .13; }
+.suit-count-card.red .count-suit-watermark { color: #ed7277; opacity: .17; }
 .count-note, .guide-note { color: var(--muted); font-size: .74rem; line-height: 1.6; }
 .count-note { margin: .7rem 0 0; text-align: right; }
 .guide-note { margin: .75rem 0 1rem; }
